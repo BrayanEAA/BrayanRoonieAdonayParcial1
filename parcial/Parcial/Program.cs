@@ -11,24 +11,27 @@ ClsUsuario clsUsuario = new ClsUsuario();
 Venta venta = new Venta();
 ClsVentas clsVentas = new ClsVentas();
 
-Console.WriteLine("Ingresa tu usuario");
+Console.WriteLine("Ingrese su usuario");
 usuario.usuario = Console.ReadLine();
-Console.WriteLine("Ingresa tu password");
+Console.WriteLine("Ingrese su contraseña");
 usuario.password = Console.ReadLine();
 
 bool Resultado = clsUsuario.Autenticacion(usuario);
 if (Resultado == true)
 {
-    Console.WriteLine("Bienvenido su tienda online");
-    Console.Write("\nIngrese el identificador del producto -> ");
+    Console.WriteLine("===========================================");
+    Console.WriteLine("Bienvenido a la tienda los ingenieros SV ");
+    Console.WriteLine("Donde todo lo que compre se lo integramos");
+    Console.WriteLine("==========================================");
+    Console.Write("\nIngrese el identificador del producto: ");
     venta.IdProducto = Convert.ToInt32(Console.ReadLine());
-    Console.Write("\nIngrese el nombre del producto -> ");
+    Console.Write("\nIngrese el nombre del producto: ");
     venta.NomProducto = Console.ReadLine();
-    Console.Write("\nIngrese una breve descripcion del producto -> ");
+    Console.Write("\nIngrese una breve descripcion del producto: ");
     venta.DescripProducto = Console.ReadLine();
-    Console.Write("\nIngrese el precio del producto -> ");
+    Console.Write("\nIngrese el precio del producto:  ");
     venta.PreProducto = Convert.ToDouble(Console.ReadLine());
-    Console.Write("\nIngrese la cantidad del producto que lleva -> ");
+    Console.Write("\nIngrese la cantidad del producto que lleva: ");
     venta.CantidadProducto = Convert.ToInt32(Console.ReadLine());
 
     Console.WriteLine($@"El ID del producto es: {venta.IdProducto}
@@ -38,5 +41,5 @@ El total a pagar es: {clsVentas.Cobro(venta)}");
 }
 else
 {
-    Console.WriteLine("Tu contraseña o usuario son incorrectos");
+    Console.WriteLine("Tu contraseña o tu usuario son incorrectos");
 }

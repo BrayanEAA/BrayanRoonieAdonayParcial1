@@ -17,7 +17,7 @@ namespace Parcial.Negocio
             if (ApliDesc > 50)
             {
                 ven.NuevoDescue = ApliDesc - 10;
-                return $"Se ha aplicado el descuento de $10 por su compra mayor de $50 el total es ${ven.NuevoDescue}";
+                return $"hay una promocion y todas las compras mayores a 50 reciben un descuento de 10 su total es de ${ven.NuevoDescue}";
             }
             else
             {
