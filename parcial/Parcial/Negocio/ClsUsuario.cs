@@ -5,34 +5,27 @@ using System.Text;
 using System.Threading.Tasks;
 using Parcial.Entidades;
 
+using System;
+
 namespace Parcial.Negocio
 {
+
     public class ClsUsuario
     {
-        public bool Acceso(string nombre, string contra)
+        public bool Autenticacion(Usuario user)
         {
-            // Verificar las credenciales del usuario
-            return nombre == "TUNOMBRE" && contra == "123";
-        }
-    }
-    public class ClsVenta
-    {
-        public void Cobro(Venta venta)
-        {
-            decimal total = venta.PrecioDelProducto * venta.CantidadDeProducto;
-
-            // Aplicar descuento si el total de la venta es mayor a $50
-            if (total > 50)
+            if (user.usuario.Equals("TUNOMBRE") && user.password.Equals("123"))
             {
-                total -= 10;
-                Console.WriteLine($"Precio original: ${venta.PrecioDelProducto * venta.CantidadDeProducto}");
-                Console.WriteLine($"Descuento aplicado: $10");
-                Console.WriteLine($"Total a pagar: ${total}");
+                return true;
             }
-            else
-            {
-                Console.WriteLine($"Total a pagar: ${total}");
-            }
+            return false;
         }
     }
 }
+
+    
+      
+
+
+
+

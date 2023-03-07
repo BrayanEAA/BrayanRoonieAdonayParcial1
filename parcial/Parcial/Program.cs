@@ -1,53 +1,42 @@
 ﻿using Parcial.Entidades;
 using Parcial.Negocio;
 
-static void Main(string[] args)
+
+
+
+using System;
+
+Usuario usuario = new Usuario();
+ClsUsuario clsUsuario = new ClsUsuario();
+Venta venta = new Venta();
+ClsVentas clsVentas = new ClsVentas();
+
+Console.WriteLine("Ingresa tu usuario");
+usuario.usuario = Console.ReadLine();
+Console.WriteLine("Ingresa tu password");
+usuario.password = Console.ReadLine();
+
+bool Resultado = clsUsuario.Autenticacion(usuario);
+if (Resultado == true)
 {
-    ClsUsuario usuarioNegocio= new ClsUsuario();  
-    ClsVenta ventaNegocio = new ClsVenta();
+    Console.WriteLine("Bienvenido su tienda online");
+    Console.Write("\nIngrese el identificador del producto -> ");
+    venta.IdProducto = Convert.ToInt32(Console.ReadLine());
+    Console.Write("\nIngrese el nombre del producto -> ");
+    venta.NomProducto = Console.ReadLine();
+    Console.Write("\nIngrese una breve descripcion del producto -> ");
+    venta.DescripProducto = Console.ReadLine();
+    Console.Write("\nIngrese el precio del producto -> ");
+    venta.PreProducto = Convert.ToDouble(Console.ReadLine());
+    Console.Write("\nIngrese la cantidad del producto que lleva -> ");
+    venta.CantidadProducto = Convert.ToInt32(Console.ReadLine());
 
-    //pedir credenciales del usuario
-    Console.WriteLine("Ingrese su nombre de usuario: ");
-    string nombre = Console.ReadLine();
-    Console.WriteLine("Ingrese su contraseña: ");
-    string contra = Console.ReadLine();
-
-    //Verificar las credenciales 
-    if (usuarioNegocio.Acceso(nombre, contra))
-    {
-        Console.WriteLine("ingrese el identificador del producto: ");
-        int identificador = int.Parse(Console.ReadLine());
-        Console.WriteLine("ingrese el nombre del producto: ");
-        string nombreProducto = Console.ReadLine();
-        Console.WriteLine("Ingrese la descripcion del producto: ");
-        string descripcionProducto = Console.ReadLine();
-        Console.WriteLine("ingrese el precio del producto: ");
-        decimal precioProducto = decimal.Parse(Console.ReadLine());
-        Console.WriteLine("ingrese la cantidad de productos: ");
-        int cantidadProducto = int.Parse(Console.ReadLine());
-
-
-        //crear una venta 
-        Venta venta = new Venta
-        {
-            IdentificadorDeProducto = identificador,
-            NombreDelProducto = nombreProducto,
-            DescripcionDelProducto = descripcionProducto,
-            PrecioDelProducto = precioProducto,
-            CantidadDeProducto = cantidadProducto,
-
-        };
-
-        // cobro de la venta
-        ventaNegocio.Cobro(venta);
-
-
-    }
-    else
-    {
-        Console.WriteLine("el usuario a ingresado las credenciales incorrectas");
-    }
-
-           
-
+    Console.WriteLine($@"El ID del producto es: {venta.IdProducto}
+El producto que lleva es: {venta.NomProducto}
+El precio del producto es: {venta.PreProducto}
+El total a pagar es: {clsVentas.Cobro(venta)}");
+}
+else
+{
+    Console.WriteLine("Tu contraseña o usuario son incorrectos");
 }
